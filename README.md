@@ -17,9 +17,9 @@ as the [Node Exporter](https://github.com/prometheus/node_exporter).
 
 This exporter is specially built for reporting AWS EC2 instance metrics.
 
-The exporter will periodically calls EC2 Introspection API as well as EC2 Describe Tags API to pull the latest EC2 metadata and tag information.
+The exporter will periodically call the EC2 Introspection API as well as EC2 Describe Tags API to pull the latest EC2 metadata and tag information.
 
-These metadata and tag information will then first be santized according to the Prometheus metric names and labels [naming convention](https://prometheus.io/docs/concepts/data_model/) and made part of ingested data as values for labels.
+These metadata and tag information will then first be sanitized according to the Prometheus metric names and labels [naming convention](https://prometheus.io/docs/concepts/data_model/) and made part of ingested data as values for labels.
 
 More specifically, the following labels will be added to each metric data (in addition to existing labels inserted by original  [Collectd Exporter](https://github.com/prometheus/collectd_exporter)).
 
@@ -83,7 +83,7 @@ Follow the steps here to build using `make`:
 
     $ mkdir -p $GOPATH/src/github.com/prometheus
     $ cd $GOPATH/src/github.com/prometheus
-    $ git clone git@github.com:cch0/collectd_exporter.git
+    $ git clone git@github.com:dev9com/collectd_exporter.git
     $ cd collectd_exporter
     $ make all
 
