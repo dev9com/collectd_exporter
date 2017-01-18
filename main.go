@@ -227,7 +227,7 @@ func (c *collectdCollector) processSamples() {
 			c.mu.Unlock()
 
 		case <-ticker:
-		// Garbage collect expired value lists.
+			// Garbage collect expired value lists.
 			now := time.Now()
 			c.mu.Lock()
 			for id, vl := range c.valueLists {
