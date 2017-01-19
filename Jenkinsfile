@@ -17,13 +17,13 @@ node {
 
         stage("Checkout Source") {
             dir("${Build.SOURCE_DIRECTORY}") {
-                git credentialsId: "$GitRepoCredentialId", url: "$GitRepoUrl"
+                git branch: "$Branch", credentialsId: "$GitRepoCredentialId", url: "$GitRepoUrl"
             }
         }
 
         stage("Checkout AWS-SDK-GO") {
             dir("${Build.AWS_SDK_GO_SOURCE_DIRECTORY}") {
-                git branch: "$Branch", credentialsId: "$GitRepoCredentialId", url: "${Build.AWS_SDK_GO_REPO_URL}"
+                git credentialsId: "$GitRepoCredentialId", url: "${Build.AWS_SDK_GO_REPO_URL}"
             }
         }
 
