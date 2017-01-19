@@ -15,15 +15,15 @@ node {
             env.GOOS="$GOOS"
         }
 
-        stage("Checkout AWS-SDK-GO") {
+        stage("Checkout Source") {
             dir("${Build.SOURCE_DIRECTORY}") {
                 git credentialsId: "$GitRepoCredentialId", url: "$GitRepoUrl"
             }
         }
 
-        stage("Checkout Source") {
+        stage("Checkout AWS-SDK-GO") {
             dir("${Build.AWS_SDK_GO_SOURCE_DIRECTORY}") {
-                git credentialsId: "$GitRepoCredentialId", url: "${Build.AWS_SDK_GO_REPO_URL}"
+                git branch: "$Branch", credentialsId: "$GitRepoCredentialId", url: "${Build.AWS_SDK_GO_REPO_URL}"
             }
         }
 
@@ -57,4 +57,5 @@ def echoParameters() {
   echo "GitRepoCredentialId: $GitRepoCredentialId"
   echo "GOOS: $GOOS"
   echo "GOARCH: $GOARCH"
+  echo "Branch: $Branch"
 }
