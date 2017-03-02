@@ -121,10 +121,10 @@ func newLabels(vl api.ValueList, md metadata) prometheus.Labels {
 			}
 		}
 	}
-	if stackValue != nil && roleValue != nil {
-		labels[strings.Join([]string{strings.ToLower(ETagStack), strings.ToLower(ETagRole)}, "_")] =
-			strings.Join([]string{*stackValue, *roleValue}, "_")
-	}
+	
+	// Special case: merge the Stack and Role into a single tag
+	labels[strings.Join([]string{strings.ToLower(ETagStack), strings.ToLower(ETagRole)}, "_")] =
+		strings.Join([]string{*stackValue, *roleValue}, "_")
 
 	// TODO: Extra-defensive? Validate all required tags are present?
 
