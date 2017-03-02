@@ -68,7 +68,7 @@ var (
 	metadataRefreshPeriod = flag.Int("metadata.refresh.period.min", 1, "refresh period in mins for retrieving metadata")
 
 	// Required resource tags used for mapping to Prometheus metric labels. This set of tags needs to align with
-	// those defined in the aws-surveiller project
+	// those defined by a shared, UCM configuration
 	ETagApplication = "Application"
 	ETagEnvironment = "Environment"
 	ETagStack       = "Stack"
@@ -503,9 +503,6 @@ func backfillTags(c *collectdCollector, resourceTagsOutput *ec2.DescribeTagsOutp
 	// Set the provided, expected tags from the resource to the collector
 	for _, tag := range resourceTagsOutput.Tags {
 		if _, ok := expectedTags[*tag.Key]; ok {
-			//var s_key string = sanitize(*tag.Key)
-			//var s_value string = sanitize(*tag.Value)
-
 			c.md.tags[*tag.Key] = *tag.Value
 			log.Infof("tag-key:%v, tag-value: %v", *tag.Key, c.md.tags[*tag.Key])
 		}

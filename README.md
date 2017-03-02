@@ -94,7 +94,7 @@ Follow the steps here to build using `make`:
 
     $ mkdir -p $GOPATH/src/tmobile
     $ cd $GOPATH/src/tmobile
-    $ git clone git@github.com:dev9com/collectd_exporter.git
+    $ git clone ssh://git@bitbucket.corporate.t-mobile.com/ucm/collectd_exporter.git
     $ cd collectd_exporter
     $ make all
 
