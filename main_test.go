@@ -114,6 +114,8 @@ func TestNewLabels(t *testing.T) {
 				"foo":           "bar",
 				ETagApplication: "Appy",
 				ETagEnvironment: "Envy",
+				ETagStack: "Stacky",
+				ETagRole: "Roley",
 			},
 			"fakeHost",
 			"10.0.1.1",
@@ -124,6 +126,7 @@ func TestNewLabels(t *testing.T) {
 			"host":     "fakeHost",
 			strings.ToLower(ETagApplication): "Appy",
 			strings.ToLower(ETagEnvironment): "Envy",
+			strings.ToLower(strings.Join([]string{ETagStack, ETagRole}, "_")): "Stacky_Roley",
 		},
 		},
 
